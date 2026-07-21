@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ASG THE BRAND | Trading King</title>
+<title>ASG THE BRAND | Cricket Community</title>
 
 <style>
 *{
@@ -22,168 +22,318 @@ html,body{
 
 body{
     color:#fff;
+    background:#020806;
+}
+
+/* =========================
+   CRICKET STADIUM BACKGROUND
+========================= */
+
+.stadium{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
     background:
-    radial-gradient(circle at 50% 20%,rgba(0,255,150,.12),transparent 30%),
     linear-gradient(
-        180deg,
-        #020806 0%,
-        #06150f 45%,
-        #020504 100%
+        rgba(0,0,0,.48),
+        rgba(0,0,0,.68)
+    ),
+    radial-gradient(
+        ellipse at center 85%,
+        #207b3e 0%,
+        #0b4b27 25%,
+        #041d10 52%,
+        #020806 100%
+    );
+}
+
+/* Stadium Sky */
+
+.stadium:before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(
+        ellipse at 15% 10%,
+        rgba(255,255,220,.45),
+        transparent 13%
+    ),
+    radial-gradient(
+        ellipse at 85% 10%,
+        rgba(255,255,220,.45),
+        transparent 13%
+    ),
+    linear-gradient(
+        to bottom,
+        rgba(4,15,28,.2),
+        rgba(2,10,6,.75)
     );
 }
 
 /* Stadium Lights */
-body:before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
+
+.light{
+    position:absolute;
+    top:7%;
+    width:190px;
+    height:190px;
+    border-radius:50%;
+
     background:
-    radial-gradient(ellipse at 15% 10%,rgba(255,255,220,.18),transparent 18%),
-    radial-gradient(ellipse at 85% 10%,rgba(255,255,220,.18),transparent 18%);
-    filter:blur(20px);
+    radial-gradient(
+        circle,
+        rgba(255,255,240,.35),
+        rgba(255,255,240,.08) 35%,
+        transparent 70%
+    );
+
+    filter:blur(10px);
 }
 
-/* Stadium */
-.stadium{
-    position:fixed;
-    inset:0;
-    z-index:0;
-    overflow:hidden;
-    pointer-events:none;
+.light.left{
+    left:-30px;
 }
 
-/* Stadium Ground */
+.light.right{
+    right:-30px;
+}
+
+/* Stadium Crowd */
+
+.crowd{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:25%;
+
+    height:18%;
+
+    background:
+    radial-gradient(
+        circle at 10% 50%,
+        #ffffff 0 2px,
+        transparent 3px
+    ),
+    radial-gradient(
+        circle at 25% 40%,
+        #ffdb66 0 2px,
+        transparent 3px
+    ),
+    radial-gradient(
+        circle at 40% 55%,
+        #ffffff 0 2px,
+        transparent 3px
+    ),
+    radial-gradient(
+        circle at 60% 35%,
+        #70eaff 0 2px,
+        transparent 3px
+    ),
+    radial-gradient(
+        circle at 75% 60%,
+        #ffffff 0 2px,
+        transparent 3px
+    ),
+    radial-gradient(
+        circle at 90% 40%,
+        #ffdb66 0 2px,
+        transparent 3px
+    );
+
+    opacity:.35;
+}
+
+/* Cricket Ground */
+
 .ground{
     position:absolute;
-    width:160%;
-    height:65%;
-    left:-30%;
-    bottom:-40%;
+
+    width:170%;
+    height:75%;
+
+    left:-35%;
+    bottom:-48%;
+
     border-radius:50%;
+
     background:
     radial-gradient(
         ellipse,
-        #167a3c 0%,
-        #075326 40%,
+        #258c46 0%,
+        #11672f 32%,
+        #084523 55%,
         #031d0e 72%,
         transparent 73%
     );
-    box-shadow:0 -20px 80px rgba(0,255,120,.15);
+
+    box-shadow:
+    0 -25px 100px rgba(0,255,120,.15);
 }
 
-/* Stadium Glow */
-.glow{
+/* Cricket Pitch */
+
+.pitch{
     position:absolute;
-    width:100%;
-    height:100%;
+
+    width:45px;
+    height:250px;
+
+    left:50%;
+    bottom:-20px;
+
+    transform:translateX(-50%);
+
+    border-radius:4px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #b78b55,
+        #e4c17d,
+        #b78b55
+    );
+
+    opacity:.55;
+
+    box-shadow:
+    0 0 30px rgba(220,190,120,.15);
+}
+
+/* Stadium Dark Overlay */
+
+.overlay{
+    position:absolute;
+    inset:0;
+
     background:
     radial-gradient(
-        ellipse at center bottom,
-        transparent 20%,
-        rgba(0,0,0,.55) 75%
+        ellipse at center,
+        transparent 15%,
+        rgba(0,0,0,.25) 55%,
+        rgba(0,0,0,.7) 100%
     );
 }
 
-/* Moving Stadium Lights */
-.light{
-    position:absolute;
-    top:8%;
-    width:150px;
-    height:150px;
-    border-radius:50%;
-    background:rgba(255,255,230,.2);
-    filter:blur(35px);
-    animation:flicker 3s infinite alternate;
-}
+/* =========================
+   MAIN CONTAINER
+========================= */
 
-.light.one{left:5%}
-.light.two{right:5%;animation-delay:1s}
-
-/* Main Container */
 .container{
     position:relative;
-    z-index:5;
+    z-index:10;
+
     width:100%;
     height:100vh;
+
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
+
     padding:18px;
 }
 
 /* Main Card */
+
 .card{
     width:100%;
     max-width:440px;
+
     position:relative;
+
     text-align:center;
+
     padding:27px 22px 24px;
+
     border-radius:30px;
 
     background:
-    linear-gradient(
-        145deg,
-        rgba(7,28,18,.92),
-        rgba(2,10,7,.88)
-    );
+    rgba(3,15,9,.82);
 
-    border:1px solid rgba(212,175,55,.42);
+    border:
+    1px solid rgba(212,175,55,.45);
+
+    backdrop-filter:blur(14px);
 
     box-shadow:
     0 30px 90px rgba(0,0,0,.8),
-    0 0 50px rgba(0,255,130,.08);
+    0 0 50px rgba(0,255,120,.08);
 
-    backdrop-filter:blur(15px);
     overflow:hidden;
 }
 
-/* Gold Glow */
+/* Card Glow */
+
 .card:before{
     content:"";
+
     position:absolute;
+
     width:300px;
     height:300px;
+
     top:-160px;
     left:50%;
+
     transform:translateX(-50%);
+
     border-radius:50%;
-    background:rgba(212,175,55,.12);
-    filter:blur(55px);
+
+    background:
+    rgba(212,175,55,.12);
+
+    filter:blur(60px);
 }
 
 /* Badge */
+
 .badge{
     position:relative;
-    z-index:5;
+    z-index:2;
+
     display:inline-block;
+
     padding:7px 15px;
-    margin-bottom:16px;
+
+    margin-bottom:15px;
 
     border-radius:30px;
 
-    color:#f2d477;
-    font-size:10px;
-    font-weight:800;
-    letter-spacing:1.5px;
+    color:#f3d477;
 
-    background:rgba(212,175,55,.08);
-    border:1px solid rgba(212,175,55,.4);
+    font-size:10px;
+
+    font-weight:800;
+
+    letter-spacing:1.4px;
+
+    background:
+    rgba(212,175,55,.08);
+
+    border:
+    1px solid rgba(212,175,55,.4);
 }
 
-/* Logo Placeholder */
+/* =========================
+   LOGO
+========================= */
+
 .logo-wrap{
     position:relative;
-    z-index:5;
+    z-index:2;
+
     width:145px;
     height:145px;
-    margin:0 auto 17px;
+
+    margin:0 auto 16px;
 }
 
-/* Animated Border */
 .logo-wrap:before{
     content:"";
+
     position:absolute;
+
     inset:-7px;
 
     border-radius:50%;
@@ -192,15 +342,14 @@ body:before{
     linear-gradient(
         135deg,
         #d4af37,
-        #fff1a8,
-        #148f4b,
+        #fff0a3,
+        #178f4c,
         #d4af37
     );
 
     animation:rotate 6s linear infinite;
 }
 
-/* Logo */
 .logo{
     position:relative;
     z-index:3;
@@ -213,40 +362,49 @@ body:before{
     border:5px solid #06120b;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
+    flex-direction:column;
 
     background:
     linear-gradient(
         145deg,
-        #10281a,
+        #12351f,
         #06120b
     );
 
     color:#d4af37;
+
     font-size:13px;
-    font-weight:bold;
+
+    font-weight:900;
+
     letter-spacing:1px;
 }
 
-/* When uploading logo */
 .logo img{
     width:100%;
     height:100%;
+
     object-fit:cover;
+
     border-radius:50%;
 }
 
 /* Heading */
+
 h1{
     position:relative;
-    z-index:5;
+    z-index:2;
 
     font-size:25px;
-    line-height:1.3;
-    font-weight:900;
 
-    color:#fff;
+    line-height:1.25;
+
+    font-weight:900;
 
     text-shadow:
     0 0 20px rgba(212,175,55,.2);
@@ -254,7 +412,8 @@ h1{
 
 h1 span{
     display:block;
-    margin-top:4px;
+
+    margin-top:5px;
 
     color:#d4af37;
 
@@ -262,27 +421,32 @@ h1 span{
 }
 
 /* Description */
+
 .subtitle{
     position:relative;
-    z-index:5;
+    z-index:2;
 
-    margin:12px auto 18px;
+    margin:11px auto 18px;
 
     max-width:360px;
 
-    color:#c3cec7;
+    color:#c8d5cd;
 
     font-size:13px;
+
     line-height:1.6;
 }
 
 /* Features */
+
 .features{
     position:relative;
-    z-index:5;
+    z-index:2;
 
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+    repeat(3,1fr);
 
     gap:8px;
 
@@ -294,13 +458,16 @@ h1 span{
 
     border-radius:14px;
 
-    background:rgba(255,255,255,.035);
+    background:
+    rgba(255,255,255,.035);
 
-    border:1px solid rgba(212,175,55,.15);
+    border:
+    1px solid rgba(212,175,55,.15);
 
-    color:#dfe9e2;
+    color:#e1ebe4;
 
     font-size:10px;
+
     font-weight:bold;
 }
 
@@ -314,15 +481,20 @@ h1 span{
     color:#d4af37;
 }
 
-/* Telegram Button */
+/* =========================
+   ANIMATED BUTTON
+========================= */
+
 .cta{
     position:relative;
-    z-index:5;
+    z-index:2;
 
     width:100%;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     gap:10px;
@@ -339,24 +511,54 @@ h1 span{
 
     font-weight:900;
 
+    overflow:hidden;
+
     background:
     linear-gradient(
         135deg,
-        #f4dc82,
+        #f7df87,
         #d4af37,
-        #8f6b16
+        #9c751b
     );
 
     box-shadow:
-    0 10px 35px rgba(212,175,55,.25);
+    0 10px 35px rgba(212,175,55,.3);
 
-    animation:pulse 2.3s infinite;
+    animation:
+    buttonPulse 2s infinite;
 
     transition:.25s;
 }
 
+/* Shine Animation */
+
+.cta:before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:70%;
+    height:100%;
+
+    background:
+    linear-gradient(
+        110deg,
+        transparent,
+        rgba(255,255,255,.6),
+        transparent
+    );
+
+    transform:skewX(-20deg);
+
+    animation:
+    shine 3s infinite;
+}
+
 .cta:hover{
-    transform:translateY(-3px);
+    transform:translateY(-3px) scale(1.01);
 }
 
 .telegram{
@@ -364,226 +566,91 @@ h1 span{
     height:22px;
 
     fill:#061009;
+
+    position:relative;
+    z-index:2;
 }
 
-/* Bottom */
+.cta{
+    position:relative;
+}
+
+.cta::after{
+    content:"";
+}
+
+/* Button Text */
+.cta{
+    text-align:center;
+}
+
+/* Note */
+
 .note{
     position:relative;
-    z-index:5;
+    z-index:2;
 
-    margin-top:13px;
+    margin-top:12px;
 
-    color:#84948a;
+    color:#84968b;
 
     font-size:10px;
 }
 
 .footer{
     position:relative;
-    z-index:5;
+    z-index:2;
 
     margin-top:16px;
 
-    color:#506259;
+    color:#52655a;
 
     font-size:9px;
 }
 
-/* Cricket Ball */
-.ball{
-    position:fixed;
-    z-index:2;
-
-    width:20px;
-    height:20px;
-
-    border-radius:50%;
-
-    background:
-    radial-gradient(
-        circle at 30% 30%,
-        #ffb0b0,
-        #d7193f 55%,
-        #790019
-    );
-
-    box-shadow:
-    0 0 20px rgba(255,30,60,.7);
-
-    animation:ballMove 6s ease-in-out infinite;
-}
-
-/* Cricket Bat */
-.bat{
-    position:fixed;
-    z-index:2;
-
-    width:70px;
-    height:12px;
-
-    border-radius:8px;
-
-    background:
-    linear-gradient(
-        90deg,
-        #7c461e,
-        #f2c879,
-        #9a5a22
-    );
-
-    animation:batMove 8s ease-in-out infinite;
-}
-
-/* Animated Cricket Player */
-.player{
-    position:fixed;
-    z-index:2;
-
-    width:45px;
-    height:85px;
-
-    left:-80px;
-    bottom:15%;
-
-    animation:playerMove 10s linear infinite;
-}
-
-/* Head */
-.player:before{
-    content:"";
-
-    position:absolute;
-
-    top:0;
-    left:14px;
-
-    width:17px;
-    height:17px;
-
-    border-radius:50%;
-
-    background:#d39a75;
-}
-
-/* Body */
-.player:after{
-    content:"";
-
-    position:absolute;
-
-    top:18px;
-    left:10px;
-
-    width:25px;
-    height:42px;
-
-    border-radius:8px;
-
-    background:
-    linear-gradient(
-        #13a968,
-        #07552f
-    );
-
-    box-shadow:
-    -7px 45px 0 -7px #eee,
-    7px 45px 0 -7px #eee;
-}
-
 /* Animations */
+
 @keyframes rotate{
+
     to{
         transform:rotate(360deg);
     }
+
 }
 
-@keyframes pulse{
+@keyframes buttonPulse{
+
     0%,100%{
         box-shadow:
-        0 10px 35px rgba(212,175,55,.2);
+        0 10px 35px rgba(212,175,55,.25);
     }
 
     50%{
         box-shadow:
-        0 10px 50px rgba(212,175,55,.55);
+        0 10px 50px rgba(212,175,55,.65),
+        0 0 25px rgba(212,175,55,.3);
     }
+
 }
 
-@keyframes ballMove{
+@keyframes shine{
 
     0%{
-        left:5%;
-        top:75%;
-        transform:scale(.7);
+        left:-100%;
     }
 
-    40%{
-        left:42%;
-        top:42%;
-        transform:scale(1.15);
-    }
-
-    70%{
-        left:72%;
-        top:58%;
-        transform:scale(.9);
+    45%{
+        left:130%;
     }
 
     100%{
-        left:105%;
-        top:25%;
-        transform:scale(.6);
-    }
-}
-
-@keyframes batMove{
-
-    0%{
-        left:-100px;
-        top:70%;
-        transform:rotate(-30deg);
+        left:130%;
     }
 
-    50%{
-        left:45%;
-        top:20%;
-        transform:rotate(25deg);
-    }
-
-    100%{
-        left:110%;
-        top:65%;
-        transform:rotate(-30deg);
-    }
-}
-
-@keyframes playerMove{
-
-    0%{
-        left:-80px;
-    }
-
-    50%{
-        left:45%;
-    }
-
-    100%{
-        left:110%;
-    }
-}
-
-@keyframes flicker{
-
-    from{
-        opacity:.25;
-    }
-
-    to{
-        opacity:.55;
-    }
 }
 
 /* Mobile */
+
 @media(max-width:380px){
 
     .card{
@@ -606,6 +673,7 @@ h1 span{
     .subtitle{
         font-size:12px;
     }
+
 }
 </style>
 </head>
@@ -614,30 +682,30 @@ h1 span{
 <body>
 
 
-<!-- Animated Cricket Stadium Background -->
+<!-- =========================
+     CRICKET STADIUM
+========================= -->
 
 <div class="stadium">
 
-    <div class="light one"></div>
-    <div class="light two"></div>
+    <div class="light left"></div>
+
+    <div class="light right"></div>
+
+    <div class="crowd"></div>
 
     <div class="ground"></div>
 
-    <div class="glow"></div>
+    <div class="pitch"></div>
+
+    <div class="overlay"></div>
 
 </div>
 
 
-<!-- Animated Cricket Elements -->
-
-<div class="ball"></div>
-
-<div class="bat"></div>
-
-<div class="player"></div>
-
-
-<!-- Main Landing Page -->
+<!-- =========================
+     MAIN CONTENT
+========================= -->
 
 <div class="container">
 
@@ -646,21 +714,25 @@ h1 span{
 
     <div class="badge">
 
-        🏏 CRICKET • MARKET • INSIGHTS
+        🏏 CRICKET COMMUNITY • MATCH UPDATES
 
     </div>
 
 
     <!-- LOGO PLACEHOLDER -->
 
-    <!-- 
-    Logo lagane ke liye neeche ke div ke andar
-    <img src="logo.jpg"> laga sakte hain.
+    <!--
+    Logo lagane ke liye:
+    <div class="logo">
+        <img src="logo.jpg" alt="ASG The Brand">
+    </div>
+
+    logo.jpg ko index.html ke same folder mein rakhein.
     -->
 
     <div class="logo-wrap">
 
-       <div class="logo">
+        <div class="logo">
     <img src="logo.jpg" alt="ASG The Brand">
 </div>
 
@@ -682,9 +754,9 @@ h1 span{
 
     <p class="subtitle">
 
-        Market trends, trading concepts aur financial insights
-        ko simple language mein samajhne ke liye
-        hamari dedicated community se judiye.
+        Cricket ke har fan ke liye match updates,
+        important moments, team news aur engaging
+        cricket insights — sab ek hi community mein.
 
     </p>
 
@@ -694,18 +766,18 @@ h1 span{
 
         <div class="feature">
 
-            <b>📈</b>
+            <b>🏏</b>
 
-            Market View
+            Match Updates
 
         </div>
 
 
         <div class="feature">
 
-            <b>💡</b>
+            <b>📊</b>
 
-            Smart Insights
+            Cricket Insights
 
         </div>
 
@@ -714,7 +786,7 @@ h1 span{
 
             <b>⚡</b>
 
-            Fast Updates
+            Fast News
 
         </div>
 
@@ -722,7 +794,7 @@ h1 span{
     </div>
 
 
-    <!-- Telegram Button -->
+    <!-- TELEGRAM BUTTON -->
 
     <a
         class="cta"
@@ -730,7 +802,6 @@ h1 span{
         target="_blank"
         rel="noopener"
     >
-
 
         <svg
             class="telegram"
@@ -742,7 +813,7 @@ h1 span{
         </svg>
 
 
-        JOIN TELEGRAM CHANNEL
+        JOIN CRICKET COMMUNITY
 
 
     </a>
@@ -750,7 +821,7 @@ h1 span{
 
     <div class="note">
 
-        Tap above to join the community
+        Tap above to join the cricket community
 
     </div>
 
@@ -768,5 +839,4 @@ h1 span{
 
 
 </body>
-
 </html>
