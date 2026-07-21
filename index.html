@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ASG THE BRAND | Trading King</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    color:#fff;
+    background:
+    radial-gradient(circle at 50% 20%,rgba(0,255,150,.12),transparent 30%),
+    linear-gradient(
+        180deg,
+        #020806 0%,
+        #06150f 45%,
+        #020504 100%
+    );
+}
+
+/* Stadium Lights */
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+    radial-gradient(ellipse at 15% 10%,rgba(255,255,220,.18),transparent 18%),
+    radial-gradient(ellipse at 85% 10%,rgba(255,255,220,.18),transparent 18%);
+    filter:blur(20px);
+}
+
+/* Stadium */
+.stadium{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+/* Stadium Ground */
+.ground{
+    position:absolute;
+    width:160%;
+    height:65%;
+    left:-30%;
+    bottom:-40%;
+    border-radius:50%;
+    background:
+    radial-gradient(
+        ellipse,
+        #167a3c 0%,
+        #075326 40%,
+        #031d0e 72%,
+        transparent 73%
+    );
+    box-shadow:0 -20px 80px rgba(0,255,120,.15);
+}
+
+/* Stadium Glow */
+.glow{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(
+        ellipse at center bottom,
+        transparent 20%,
+        rgba(0,0,0,.55) 75%
+    );
+}
+
+/* Moving Stadium Lights */
+.light{
+    position:absolute;
+    top:8%;
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background:rgba(255,255,230,.2);
+    filter:blur(35px);
+    animation:flicker 3s infinite alternate;
+}
+
+.light.one{left:5%}
+.light.two{right:5%;animation-delay:1s}
+
+/* Main Container */
+.container{
+    position:relative;
+    z-index:5;
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:18px;
+}
+
+/* Main Card */
+.card{
+    width:100%;
+    max-width:440px;
+    position:relative;
+    text-align:center;
+    padding:27px 22px 24px;
+    border-radius:30px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(7,28,18,.92),
+        rgba(2,10,7,.88)
+    );
+
+    border:1px solid rgba(212,175,55,.42);
+
+    box-shadow:
+    0 30px 90px rgba(0,0,0,.8),
+    0 0 50px rgba(0,255,130,.08);
+
+    backdrop-filter:blur(15px);
+    overflow:hidden;
+}
+
+/* Gold Glow */
+.card:before{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    top:-160px;
+    left:50%;
+    transform:translateX(-50%);
+    border-radius:50%;
+    background:rgba(212,175,55,.12);
+    filter:blur(55px);
+}
+
+/* Badge */
+.badge{
+    position:relative;
+    z-index:5;
+    display:inline-block;
+    padding:7px 15px;
+    margin-bottom:16px;
+
+    border-radius:30px;
+
+    color:#f2d477;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1.5px;
+
+    background:rgba(212,175,55,.08);
+    border:1px solid rgba(212,175,55,.4);
+}
+
+/* Logo Placeholder */
+.logo-wrap{
+    position:relative;
+    z-index:5;
+    width:145px;
+    height:145px;
+    margin:0 auto 17px;
+}
+
+/* Animated Border */
+.logo-wrap:before{
+    content:"";
+    position:absolute;
+    inset:-7px;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        135deg,
+        #d4af37,
+        #fff1a8,
+        #148f4b,
+        #d4af37
+    );
+
+    animation:rotate 6s linear infinite;
+}
+
+/* Logo */
+.logo{
+    position:relative;
+    z-index:3;
+
+    width:100%;
+    height:100%;
+
+    border-radius:50%;
+
+    border:5px solid #06120b;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+    linear-gradient(
+        145deg,
+        #10281a,
+        #06120b
+    );
+
+    color:#d4af37;
+    font-size:13px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+/* When uploading logo */
+.logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+/* Heading */
+h1{
+    position:relative;
+    z-index:5;
+
+    font-size:25px;
+    line-height:1.3;
+    font-weight:900;
+
+    color:#fff;
+
+    text-shadow:
+    0 0 20px rgba(212,175,55,.2);
+}
+
+h1 span{
+    display:block;
+    margin-top:4px;
+
+    color:#d4af37;
+
+    font-size:17px;
+}
+
+/* Description */
+.subtitle{
+    position:relative;
+    z-index:5;
+
+    margin:12px auto 18px;
+
+    max-width:360px;
+
+    color:#c3cec7;
+
+    font-size:13px;
+    line-height:1.6;
+}
+
+/* Features */
+.features{
+    position:relative;
+    z-index:5;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:8px;
+
+    margin-bottom:20px;
+}
+
+.feature{
+    padding:11px 4px;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.035);
+
+    border:1px solid rgba(212,175,55,.15);
+
+    color:#dfe9e2;
+
+    font-size:10px;
+    font-weight:bold;
+}
+
+.feature b{
+    display:block;
+
+    font-size:18px;
+
+    margin-bottom:4px;
+
+    color:#d4af37;
+}
+
+/* Telegram Button */
+.cta{
+    position:relative;
+    z-index:5;
+
+    width:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:10px;
+
+    padding:17px 18px;
+
+    border-radius:16px;
+
+    text-decoration:none;
+
+    color:#061009;
+
+    font-size:15px;
+
+    font-weight:900;
+
+    background:
+    linear-gradient(
+        135deg,
+        #f4dc82,
+        #d4af37,
+        #8f6b16
+    );
+
+    box-shadow:
+    0 10px 35px rgba(212,175,55,.25);
+
+    animation:pulse 2.3s infinite;
+
+    transition:.25s;
+}
+
+.cta:hover{
+    transform:translateY(-3px);
+}
+
+.telegram{
+    width:22px;
+    height:22px;
+
+    fill:#061009;
+}
+
+/* Bottom */
+.note{
+    position:relative;
+    z-index:5;
+
+    margin-top:13px;
+
+    color:#84948a;
+
+    font-size:10px;
+}
+
+.footer{
+    position:relative;
+    z-index:5;
+
+    margin-top:16px;
+
+    color:#506259;
+
+    font-size:9px;
+}
+
+/* Cricket Ball */
+.ball{
+    position:fixed;
+    z-index:2;
+
+    width:20px;
+    height:20px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle at 30% 30%,
+        #ffb0b0,
+        #d7193f 55%,
+        #790019
+    );
+
+    box-shadow:
+    0 0 20px rgba(255,30,60,.7);
+
+    animation:ballMove 6s ease-in-out infinite;
+}
+
+/* Cricket Bat */
+.bat{
+    position:fixed;
+    z-index:2;
+
+    width:70px;
+    height:12px;
+
+    border-radius:8px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #7c461e,
+        #f2c879,
+        #9a5a22
+    );
+
+    animation:batMove 8s ease-in-out infinite;
+}
+
+/* Animated Cricket Player */
+.player{
+    position:fixed;
+    z-index:2;
+
+    width:45px;
+    height:85px;
+
+    left:-80px;
+    bottom:15%;
+
+    animation:playerMove 10s linear infinite;
+}
+
+/* Head */
+.player:before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:14px;
+
+    width:17px;
+    height:17px;
+
+    border-radius:50%;
+
+    background:#d39a75;
+}
+
+/* Body */
+.player:after{
+    content:"";
+
+    position:absolute;
+
+    top:18px;
+    left:10px;
+
+    width:25px;
+    height:42px;
+
+    border-radius:8px;
+
+    background:
+    linear-gradient(
+        #13a968,
+        #07552f
+    );
+
+    box-shadow:
+    -7px 45px 0 -7px #eee,
+    7px 45px 0 -7px #eee;
+}
+
+/* Animations */
+@keyframes rotate{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes pulse{
+    0%,100%{
+        box-shadow:
+        0 10px 35px rgba(212,175,55,.2);
+    }
+
+    50%{
+        box-shadow:
+        0 10px 50px rgba(212,175,55,.55);
+    }
+}
+
+@keyframes ballMove{
+
+    0%{
+        left:5%;
+        top:75%;
+        transform:scale(.7);
+    }
+
+    40%{
+        left:42%;
+        top:42%;
+        transform:scale(1.15);
+    }
+
+    70%{
+        left:72%;
+        top:58%;
+        transform:scale(.9);
+    }
+
+    100%{
+        left:105%;
+        top:25%;
+        transform:scale(.6);
+    }
+}
+
+@keyframes batMove{
+
+    0%{
+        left:-100px;
+        top:70%;
+        transform:rotate(-30deg);
+    }
+
+    50%{
+        left:45%;
+        top:20%;
+        transform:rotate(25deg);
+    }
+
+    100%{
+        left:110%;
+        top:65%;
+        transform:rotate(-30deg);
+    }
+}
+
+@keyframes playerMove{
+
+    0%{
+        left:-80px;
+    }
+
+    50%{
+        left:45%;
+    }
+
+    100%{
+        left:110%;
+    }
+}
+
+@keyframes flicker{
+
+    from{
+        opacity:.25;
+    }
+
+    to{
+        opacity:.55;
+    }
+}
+
+/* Mobile */
+@media(max-width:380px){
+
+    .card{
+        padding:23px 16px;
+    }
+
+    .logo-wrap{
+        width:130px;
+        height:130px;
+    }
+
+    h1{
+        font-size:22px;
+    }
+
+    h1 span{
+        font-size:15px;
+    }
+
+    .subtitle{
+        font-size:12px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- Animated Cricket Stadium Background -->
+
+<div class="stadium">
+
+    <div class="light one"></div>
+    <div class="light two"></div>
+
+    <div class="ground"></div>
+
+    <div class="glow"></div>
+
+</div>
+
+
+<!-- Animated Cricket Elements -->
+
+<div class="ball"></div>
+
+<div class="bat"></div>
+
+<div class="player"></div>
+
+
+<!-- Main Landing Page -->
+
+<div class="container">
+
+<main class="card">
+
+
+    <div class="badge">
+
+        🏏 CRICKET • MARKET • INSIGHTS
+
+    </div>
+
+
+    <!-- LOGO PLACEHOLDER -->
+
+    <!-- 
+    Logo lagane ke liye neeche ke div ke andar
+    <img src="logo.jpg"> laga sakte hain.
+    -->
+
+    <div class="logo-wrap">
+
+       <div class="logo">
+    <img src="logo.jpg" alt="ASG The Brand">
+</div>
+
+    </div>
+
+
+    <h1>
+
+        ᴀꜱɢ ᴛʜᴇ ʙʀᴀɴᴅ
+
+        <span>
+
+            { tr@ding king }
+
+        </span>
+
+    </h1>
+
+
+    <p class="subtitle">
+
+        Market trends, trading concepts aur financial insights
+        ko simple language mein samajhne ke liye
+        hamari dedicated community se judiye.
+
+    </p>
+
+
+    <div class="features">
+
+
+        <div class="feature">
+
+            <b>📈</b>
+
+            Market View
+
+        </div>
+
+
+        <div class="feature">
+
+            <b>💡</b>
+
+            Smart Insights
+
+        </div>
+
+
+        <div class="feature">
+
+            <b>⚡</b>
+
+            Fast Updates
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Telegram Button -->
+
+    <a
+        class="cta"
+        href="https://t.me/+MN5WhXtpS5E4ZmQ1"
+        target="_blank"
+        rel="noopener"
+    >
+
+
+        <svg
+            class="telegram"
+            viewBox="0 0 24 24"
+        >
+
+            <path d="M21.4 3.6 2.9 10.7c-1.3.5-1.3 1.2-.2 1.5l4.7 1.5 1.8 5.7c.2.6.1.8.7.8.4 0 .6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.3 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.7-1.4ZM8.1 13.4l10.9-6.9c.5-.3 1-.1.6.2l-8.8 8-.3 3.1-1.5-4.4-3.4-1.1c-.7-.2-.7-.5-.1-.9l2.4-1Z"/>
+
+        </svg>
+
+
+        JOIN TELEGRAM CHANNEL
+
+
+    </a>
+
+
+    <div class="note">
+
+        Tap above to join the community
+
+    </div>
+
+
+    <div class="footer">
+
+        © 2026 ASG THE BRAND ™
+
+    </div>
+
+
+</main>
+
+</div>
+
+
+</body>
+
+</html>
